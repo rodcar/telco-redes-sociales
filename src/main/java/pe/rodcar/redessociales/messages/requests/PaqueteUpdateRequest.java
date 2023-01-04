@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class PaqueteCreateRequest {
+public class PaqueteUpdateRequest {
 	@NotBlank
 	private String nombre;
 	@NotBlank

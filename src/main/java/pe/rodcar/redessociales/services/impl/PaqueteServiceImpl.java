@@ -15,7 +15,7 @@ public class PaqueteServiceImpl implements PaqueteService {
 
 	@Autowired
 	private PaqueteRepository paqueteRepository;
-	
+
 	@Override
 	public List<Paquete> findAll() throws Exception {
 		return paqueteRepository.findAll();
@@ -39,6 +39,11 @@ public class PaqueteServiceImpl implements PaqueteService {
 	@Override
 	public Optional<Paquete> findById(Long id) throws Exception {
 		return paqueteRepository.findById(id);
+	}
+
+	@Override
+	public boolean existsById(Long id) throws Exception {
+		return paqueteRepository.existsById(id);
 	}
 
 }

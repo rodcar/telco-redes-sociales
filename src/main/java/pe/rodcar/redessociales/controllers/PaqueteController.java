@@ -23,11 +23,7 @@ public class PaqueteController {
 	public ResponseEntity<List<Paquete>> fetchAll() {
 		try {
 			List<Paquete> paquetes = paqueteService.findAll();
-			if (paquetes.isEmpty()) {
-				return ResponseEntity.noContent().build();
-			}
-
-			return ResponseEntity.ok(paquetes);
+			return (paquetes.isEmpty()) ? ResponseEntity.noContent().build() : ResponseEntity.ok(paquetes);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().build();

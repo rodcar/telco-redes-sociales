@@ -36,6 +36,17 @@ public class PaqueteController {
 		}
 	}
 
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Optional<Paquete>> fetchById(@PathVariable("id") Long id) {
+		try {
+			Optional<Paquete> paquete = paqueteService.findById(id);
+			return (paquete.isPresent()) ? ResponseEntity.ok(paquete) : ResponseEntity.notFound().build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().build();
+		}
+	}
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> save(@Validated @RequestBody PaqueteCreateRequest request) {
 		try {

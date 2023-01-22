@@ -11,6 +11,8 @@ public class PaqueteCreateRequest {
 	private String nombre;
 	@NotBlank
 	private String descripcion;
+	@NotBlank
+	private String imagen;
 	@NotNull
 	@Min(0)
 	private Double precio;

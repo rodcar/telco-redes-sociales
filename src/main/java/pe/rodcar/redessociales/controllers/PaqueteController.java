@@ -56,7 +56,7 @@ public class PaqueteController {
 	public ResponseEntity<Object> save(@Validated @RequestBody PaqueteCreateRequest request) {
 		try {
 			Paquete paquete = Paquete.builder().nombre(request.getNombre()).descripcion(request.getDescripcion())
-					.precio(request.getPrecio()).build();
+					.imagen(request.getImagen()).precio(request.getPrecio()).build();
 			Paquete nuevoPaquete = paqueteService.save(paquete);
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 					.buildAndExpand(nuevoPaquete.getId()).toUri();
@@ -72,7 +72,7 @@ public class PaqueteController {
 			@Validated @RequestBody PaqueteUpdateRequest request) {
 		try {
 			Paquete paquete = Paquete.builder().id(id).nombre(request.getNombre()).descripcion(request.getDescripcion())
-					.precio(request.getPrecio()).build();
+					.imagen(request.getImagen()).precio(request.getPrecio()).build();
 			Paquete paqueteActualizado = paqueteService.update(paquete);
 			return ResponseEntity.ok(paqueteActualizado);
 		} catch (Exception e) {
